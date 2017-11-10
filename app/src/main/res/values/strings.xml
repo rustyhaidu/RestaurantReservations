@@ -6,4 +6,5 @@
     <string name="incorrectCredentials">Incorrect username or password</string>
     <string name="emailFormatError">Wrong Email Format!</string>
     <string name="savedLoginText">Saved Login(s) :</string>
+    <string name="table_test">Table Test</string>
 </resources>

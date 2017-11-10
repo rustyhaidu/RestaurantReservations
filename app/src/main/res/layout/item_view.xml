@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Table Test"
+        android:text="@string/table_test"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
