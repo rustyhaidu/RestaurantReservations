@@ -4,4 +4,6 @@
     <string name="password">password</string>
     <string name="please_login">PLEASE LOGIN</string>
     <string name="incorrectCredentials">Incorrect username or password</string>
+    <string name="emailFormatError">Wrong Email Format!</string>
+    <string name="savedLoginText">Saved Login(s) :</string>
 </resources>

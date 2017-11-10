@@ -10,9 +10,9 @@
         android:id="@+id/loginLabel"
         android:layout_width="119dp"
         android:layout_height="54dp"
-        android:layout_above="@+id/etUsernameXmlId"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="32dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/please_login"
         android:textSize="18sp"
@@ -21,27 +21,29 @@
     <EditText
         android:id="@+id/etUsernameXmlId"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_above="@+id/etPasswordXmlId"
+        android:layout_height="50dp"
+        android:layout_below="@+id/loginLabel"
         android:layout_centerHorizontal="true"
         android:background="@drawable/eddittext_top_curv_gray"
         android:ems="10"
         android:gravity="fill_vertical|center_horizontal"
-        android:hint="@string/username"/>
+        android:hint="@string/username"
+        android:textSize="22sp"/>
 
     <EditText
         android:id="@+id/etPasswordXmlId"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_alignEnd="@+id/etUsernameXmlId"
-        android:layout_alignRight="@+id/etUsernameXmlId"
-        android:layout_centerVertical="true"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/etUsernameXmlId"
+        android:layout_alignStart="@+id/etUsernameXmlId"
+        android:layout_below="@+id/etUsernameXmlId"
         android:background="@drawable/edditext_bottom_curv_gray"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:maxLength="10"/>
+        android:maxLength="8"
+        android:textSize="22sp"/>
 
     <Button
         android:id="@+id/btLoginId"
@@ -49,7 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etPasswordXmlId"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp"
-        android:text="LOGIN"/>
+        android:layout_marginTop="23dp"
+        android:text="LOGIN"
+        android:textSize="22sp"/>
 
 </RelativeLayout>
