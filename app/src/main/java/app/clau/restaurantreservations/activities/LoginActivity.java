@@ -45,10 +45,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (isEmailValid(emailAsUserName)) {
 
 
-                    String ediTextString = mSharedPreferences.getString(KEY_EDITTEXT,"");
+                    //String ediTextString = mSharedPreferences.getString(KEY_EDITTEXT,"");
                     mEditor = mSharedPreferences.edit();
                     mEditor.putString(emailAsUserName, password);
-                    mEditor.commit();
+                   // mEditor.commit();
                     mEditor.apply();
 
                     Intent openMainIntent = new Intent();
