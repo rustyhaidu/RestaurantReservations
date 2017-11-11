@@ -9,34 +9,12 @@ import app.clau.restaurantreservations.R;
 
 
 public class SplashActivity extends AppCompatActivity {
-    public ActionBar actionBar;
 
     protected void onCreate(Bundle toTheSuperClass) {
         super.onCreate(toTheSuperClass);
-        setContentView(R.layout.activity_splash);  //xml splash
-        actionBar = getSupportActionBar();
-        actionBar.hide();
-        //Thread urmeaza timer
 
-        Thread timer = new Thread() {
-            public void run() {
-                try {
-                    sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    Intent openLoginIntent = new Intent();
-                    openLoginIntent.setClass(SplashActivity.this,LoginActivity.class);
-                    startActivity(openLoginIntent);
-                }
-
-            }
-        };
-        timer.start();
-    }
-
-    protected void onPause() {
-        super.onPause();
+        Intent openLoginIntent = new Intent(this,LoginActivity.class);
+        startActivity(openLoginIntent);
         finish();
     }
 }

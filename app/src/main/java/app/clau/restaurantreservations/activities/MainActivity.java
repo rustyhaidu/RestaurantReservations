@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
             ediTextString = allEntries.entrySet().iterator().next().getKey();
         }
 
-
-        assert ediTextString != null;
         mDisplayedUserName.setText(String.format("%s %s", getString(R.string.savedLoginText), ediTextString));
 
         list = findViewById(R.id.listView);

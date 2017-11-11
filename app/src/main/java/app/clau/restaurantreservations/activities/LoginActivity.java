@@ -51,11 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                    // mEditor.commit();
                     mEditor.apply();
 
-                    Intent openMainIntent = new Intent();
-                    openMainIntent.setClass(LoginActivity.this,MainActivity.class);
-                    openMainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                            Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent openMainIntent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(openMainIntent);
                 } else {
                     Toast.makeText(LoginActivity.this, R.string.emailFormatError, Toast.LENGTH_SHORT).show();
