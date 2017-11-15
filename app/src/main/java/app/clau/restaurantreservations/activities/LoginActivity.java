@@ -13,13 +13,14 @@ import android.widget.Toast;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import app.clau.restaurantreservations.R;
+import app.clau.restaurantreservations.utils.Util;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mUsernameET;
     private EditText mPasswordET;
     private static final String PREFS_FILE = "app.clau.restaurantreservations.preferences";
-    private static final String KEY_EDITTEXT ="KEY_EDITTEXT";
+    private static final String KEY_EDITTEXT = "KEY_EDITTEXT";
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mSharedPreferences = getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
 
-
+        final Util utils = new Util();
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,16 +43,16 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPasswordET.getText().toString();
                 if (emailAsUserName.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LoginActivity.this, getString(R.string.incorrectCredentials), Toast.LENGTH_SHORT).show();
-                } else if (isEmailValid(emailAsUserName)) {
+                } else if (utils.isEmailValid(emailAsUserName)) {
 
 
                     //String ediTextString = mSharedPreferences.getString(KEY_EDITTEXT,"");
                     mEditor = mSharedPreferences.edit();
                     mEditor.putString(emailAsUserName, password);
-                   // mEditor.commit();
+                    // mEditor.commit();
                     mEditor.apply();
 
-                    Intent openMainIntent = new Intent(LoginActivity.this,MainActivity.class);
+                    Intent openMainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(openMainIntent);
                 } else {
                     Toast.makeText(LoginActivity.this, R.string.emailFormatError, Toast.LENGTH_SHORT).show();
@@ -61,8 +62,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private boolean isEmailValid(String email) {
-        EmailValidator validator = EmailValidator.getInstance();
-        return validator.isValid(email);
-    }
+
 }

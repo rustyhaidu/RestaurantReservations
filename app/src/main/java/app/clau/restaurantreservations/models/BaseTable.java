@@ -1,10 +1,12 @@
 package app.clau.restaurantreservations.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Claudiu on 10-Nov-17.
  */
 
-public class BaseTable {
+public class BaseTable implements Serializable {
     private int number;
 
     public int getNumber() {

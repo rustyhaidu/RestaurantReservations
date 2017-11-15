@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.clau.restaurantreservations.R;
+import app.clau.restaurantreservations.adaptars.TableAdapter;
 import app.clau.restaurantreservations.models.BaseTable;
 import app.clau.restaurantreservations.models.NoSmokingTable;
 import app.clau.restaurantreservations.models.SmokingTable;
@@ -27,24 +24,25 @@ import app.clau.restaurantreservations.models.VIPTable;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView list;
+    private ListView list;
     private List<BaseTable> myTables = new ArrayList<BaseTable>();
+    private TextView mEmptyTextView;
 
-    private static final String KEY_EDITTEXT = "KEY_EDITTEXT";
+    //private static final String KEY_EDITTEXT = "KEY_EDITTEXT";
     private static final String PREFS_FILE = "app.clau.restaurantreservations.preferences";
     // private SharedPreferences.Editor mEditor;
-    TextView mDisplayedUserName;
+    TextView mDisplayedUserNameId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDisplayedUserName = findViewById(R.id.tvMainUserNameId);
-
+        mDisplayedUserNameId = findViewById(R.id.tvMainUserNameId);
+        mEmptyTextView = findViewById(R.id.textNumber);
 
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
-        //String ediTextString = sharedPreferences.getString("rustyhaidu@yahoo.com","12345678");
+
         Map<String, ?> allEntries = sharedPreferences.getAll();
         String ediTextString = "";
         if (allEntries.size() > 1) {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             ediTextString = allEntries.entrySet().iterator().next().getKey();
         }
 
-        mDisplayedUserName.setText(String.format("%s %s", getString(R.string.savedLoginText), ediTextString));
+        mDisplayedUserNameId.setText(String.format("%s %s", getString(R.string.savedLoginText), ediTextString));
 
         list = findViewById(R.id.listView);
         populateTableList();
@@ -63,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateListView() {
-        ArrayAdapter<BaseTable> adapter = new MyListAdapter();
-        // ListView list = (ListView)findViewById(R.id.listView);
+        TableAdapter adapter = new TableAdapter(this, myTables);
         list.setAdapter(adapter);
+       list.setEmptyView(mEmptyTextView);
     }
 
 
@@ -75,25 +73,5 @@ public class MainActivity extends AppCompatActivity {
         myTables.add(new VIPTable(3));
         myTables.add(new BaseTable(4));
         myTables.add(new BaseTable(5));
-    }
-
-    private class MyListAdapter extends ArrayAdapter<BaseTable> {
-
-        public MyListAdapter() {
-            super(MainActivity.this, R.layout.item_view, myTables);
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View itemView = convertView;
-
-            if (itemView == null) {
-                itemView = getLayoutInflater().inflate(R.layout.item_view, parent, false);
-            }
-            BaseTable currentTable = myTables.get(position);
-            TextView tvTextNumber = itemView.findViewById(R.id.textNumber);
-            tvTextNumber.setText(String.valueOf(currentTable.getNumber()));
-
-            return itemView;
-        }
     }
 }
