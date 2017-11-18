@@ -69,7 +69,6 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
         list = findViewById(R.id.listView);
         populateTableList();
         populateListView();
