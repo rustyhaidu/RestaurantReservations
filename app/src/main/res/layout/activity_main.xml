@@ -16,7 +16,14 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="285dp"
         android:layout_margin="20dp"/>
+
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

@@ -15,14 +15,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import app.clau.restaurantreservations.R;
 import app.clau.restaurantreservations.utils.Util;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private EditText mUsernameET;
     private EditText mPasswordET;
-    private static final String PREFS_FILE = "app.clau.restaurantreservations.preferences";
-    private static final String KEY_EDITTEXT = "KEY_EDITTEXT";
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
